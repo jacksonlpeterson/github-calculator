@@ -16,11 +16,11 @@ class Calculator {
     int multiply(int a , int b){
         return a * b;
     }
-
-    int divide(int a , int b){
-        if (b == 0) throw new ArithmeticException("Division by zero.");
+    int divide(int a, int b){
+        if (b == 0) throw new ArithmeticException("/ by zero");
         return a / b;
     }
+    
 
     // Efficient Fibonacci Number Finder
     int fibonacciNumberFinder(int n){
