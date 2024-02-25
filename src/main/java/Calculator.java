@@ -1,8 +1,8 @@
+import java.util.UUID;
 
 class Calculator {
 
     Calculator(){
-
     }
 
     int add(int a , int b){
@@ -18,52 +18,41 @@ class Calculator {
     }
 
     int divide(int a , int b){
+        // Ensure division by zero is handled
+        if (b == 0) throw new ArithmeticException("Division by zero.");
         return a / b;
     }
 
-
-    /*
-    Returns the n'th number in the fibonacci sequence
-    https://en.wikipedia.org/wiki/Fibonacci_number
-    Example below
-    n = x
-    1 = 1
-    2 = 1
-    3 = 2
-    4 = 3
-    5 = 5
-    .
-    .
-    .
-    etc
-     */
     int fibonacciNumberFinder(int n){
-        return 0;
+        if (n <= 0) {
+            return 0;
+        } else if (n == 1 || n == 2) {
+            return 1;
+        } else {
+            int fib = 1, prevFib = 1;
+            for (int i = 3; i <= n; i++) {
+                int temp = fib;
+                fib += prevFib;
+                prevFib = temp;
+            }
+            return fib;
+        }
     }
 
-
-    /*
-    Returns binary value of the given int number
-    The binary number will be stored as a string
-    if int a = 0 then this method returns: 0
-    if int a = 10 then this method returns: 1010
-    if int a = 16 then this method returns: 10000
-     */
     String intToBinaryNumber(int number){
-        return null;
+        return Integer.toBinaryString(number);
     }
-//Test
-    /*
-    Create a completely unique String identifier for a given string
-    Each createdID must contain the string n in its unaltered Form
-    if String n = "Jason"
-    then the created ID could be = Jasonklfgn3jknnvksdfm - Because it contains the unaltered String n and is unique
 
-    if you run this function twice with the same String input, it must return 2 unique String IDs
-     */
     String createUniqueID(String n){
-        return null;
+        return n + UUID.randomUUID().toString();
     }
 
-
+    // Main method for testing
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println("Fibonacci of 5: " + calc.fibonacciNumberFinder(5));
+        System.out.println("Binary of 10: " + calc.intToBinaryNumber(10));
+        System.out.println("Unique ID for 'Jason': " + calc.createUniqueID("Jason"));
+    }
 }
+
