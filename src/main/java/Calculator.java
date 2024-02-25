@@ -47,12 +47,6 @@ class Calculator {
         return n + UUID.randomUUID().toString();
     }
 
-    // Main method for testing
-    public static void main(String[] args) {
-        Calculator calc = new Calculator();
-        System.out.println("Fibonacci of 5: " + calc.fibonacciNumberFinder(5));
-        System.out.println("Binary of 10: " + calc.intToBinaryNumber(10));
-        System.out.println("Unique ID for 'Jason': " + calc.createUniqueID("Jason"));
-    }
+
 }
 
